@@ -7,16 +7,13 @@ An event-driven serverless ETL pipeline built with **AWS S3** and **Lambda** to 
 
 ## 🛠 Tech Stack
 
-* 
-**Cloud Provider:** AWS (S3, Lambda) 
+*  **Cloud Provider:** AWS (S3, Lambda) 
 
 
-* 
-**Runtime:** Python 3.11 
+*  **Runtime:** Python 3.11 
 
 
-* 
-**Libraries:** `boto3`, `csv`, `json`, `io`, `datetime` 
+*  **Libraries:** `boto3`, `csv`, `json`, `io`, `datetime` 
 
 
 
@@ -24,12 +21,10 @@ An event-driven serverless ETL pipeline built with **AWS S3** and **Lambda** to 
 
 The project utilizes a single bucket named `s3-stockprices` with the following folder structure :
 
-* 
-**`Input-data/`**: Landing zone for raw `stock-pricing.csv` files .
+*  **`Input-data/`**: Landing zone for raw `stock-pricing.csv` files .
 
 
-* 
-**`Output-data/`**: Destination for processed and transformed datasets.
+*  **`Output-data/`**: Destination for processed and transformed datasets.
 
 
 
@@ -69,24 +64,19 @@ The function requires an execution role with the following inline policy to read
 
 The Python script `lamda_fnction.py` processes each row of the CSV to ensure data quality and generate new features:
 
-1. 
-**Date Standardization**: Converts dates from `MM/DD/YYYY` to `YYYY-MM-DD` format .
+1.  **Date Standardization**: Converts dates from `MM/DD/YYYY` to `YYYY-MM-DD` format .
 
 
-2. 
-**Volume Filtering**: If the trading volume is less than 100,000, it is marked as `'N/A'` .
+2.  **Volume Filtering**: If the trading volume is less than 100,000, it is marked as `'N/A'` .
 
 
-3. 
-**Data Imputation**: If the `low` price is recorded as 0, it is replaced by the average of the `open` and `close` prices .
+3.  **Data Imputation**: If the `low` price is recorded as 0, it is replaced by the average of the `open` and `close` prices .
 
 
-4. 
-**Percentage Change**: Calculates the daily return using the formula: $(((Close - Open) / Open) * 100)$.
+4.  **Percentage Change**: Calculates the daily return using the formula: $(((Close - Open) / Open) * 100)$.
 
 
-5. 
-**Audit Columns**: Adds a `created_at` timestamp to every processed record.
+5.  **Audit Columns**: Adds a `created_at` timestamp to every processed record.
 
 
 
@@ -94,16 +84,13 @@ The Python script `lamda_fnction.py` processes each row of the CSV to ensure dat
 
 The pipeline was validated using the **Amazon S3 Put** test template.
 
-* 
-**Test Event Name**: `SPTE` 
+*  **Test Event Name**: `SPTE` 
 
 
-* 
-**Input File**: `Input-data/stock_pricing.csv` 
+*  **Input File**: `Input-data/stock_pricing.csv` 
 
 
-* 
-**Expected Result**: A status code of 200 and a success message indicating the file was uploaded to the output folder .
+*  **Expected Result**: A status code of 200 and a success message indicating the file was uploaded to the output folder .
 
 
 
