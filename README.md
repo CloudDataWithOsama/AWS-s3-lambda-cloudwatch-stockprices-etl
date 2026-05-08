@@ -1,4 +1,4 @@
-# aws-s3-lambda-stock-etl
+# AWS-s3-lambda-cloudwatch-stock-etl
 
 An event-driven serverless ETL pipeline built with **AWS S3** and **Lambda** to automate the processing of stock pricing data. The pipeline triggers on file uploads to ingest CSV data, performs automated cleaning and executes feature engineering to calculate financial metrics before storing the processed output back in S3.
 
