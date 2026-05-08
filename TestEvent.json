@@ -1,0 +1,14 @@
+{
+  "Records": [
+    {
+      "s3": {
+        "bucket": {
+          "name": "s3-stockprices"
+        },
+        "object": {
+          "key": "Input-data/stock_pricing.csv"
+        }
+      }
+    }
+  ]
+}
