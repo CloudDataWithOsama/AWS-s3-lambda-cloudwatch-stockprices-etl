@@ -16,16 +16,36 @@ An event-driven serverless ETL pipeline built with **AWS S3** and **Lambda** to 
 *  **Libraries:** `boto3`, `csv`, `json`, `io`, `datetime` 
 
 
-
 ## 📂 S3 Bucket Configuration
 
-The project utilizes a single bucket named `s3-stockprices` with the following folder structure :
+Here is the project structure for the **AWS S3-Lambda Stock Pricing ETL Pipeline**, divided into the cloud (AWS) side and the local development side:
 
-*  **`Input-data/`**: Landing zone for raw `stock-pricing.csv` files .
+### 1. Cloud (AWS S3) Structure
+
+The S3 bucket acts as the storage layer for both raw and processed data.
+
+*  **Bucket Name**: `s3-stockprices` 
 
 
-*  **`Output-data/`**: Destination for processed and transformed datasets.
+*  **`Input-data/`**: The landing zone where you upload the raw `stock-pricing.csv` file.
 
+*  **`Output-data/`**: The destination where the Lambda function saves the transformed CSV after processing.
+
+
+### 2. Local/Repository Structure
+
+If you are organizing this project in a GitHub repository, your folder structure should look like this:
+
+```text
+aws-s3-lambda-stock-etl/
+├── lambda_function.py          # The main Python script containing the ETL logic
+├── stock-pricing.csv           # Sample dataset for testing
+├── InlinePolicy.json
+├── TestEvent.json
+├── Step by step Implementation
+├── README.md                   # Documentation (Architecture, setup, and usage)
+└── .gitignore                  # Files to exclude (e.g., __pycache__, .env)
+```
 
 
 ## ⚙️ Lambda Setup & Trigger
